@@ -1,54 +1,45 @@
-import axios from 'axios';
-import React, { createContext, useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import axios from "axios";
+import React, { createContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-export const UserContext  = createContext({});
+export const UserContext = createContext({});
 
-function Context({children}) {
- 
+function Context({ children }) {
   const navigate = useNavigate();
-  
 
-    const [user, setuser] = useState({});
+  const [user, setuser] = useState({});
 
-    useEffect(() => {
-         
-        const getUser = async()=>{
-            // try {
-                
-            //     const data  = JSON.parse(localStorage.getItem("user"))
-            //     setuser(data);
-            //     console.log(data);
-               
+  useEffect(() => {
+    const getUser = async () => {
+      // try {
 
-            // } catch (error) {
-                
-            //     //navigate to login
-              
-            //     console.log(error.message ,"not authenticated");
-            //     //navigate("/login")
-            // }
+      //     const data  = JSON.parse(localStorage.getItem("user"))
+      //     setuser(data);
+      //     console.log(data);
 
-            const data = JSON.parse(localStorage.getItem("user"))
-            if(!data){
-              navigate('/login')
-            }
-            setuser(data);
-            
+      // } catch (error) {
 
+      //     //navigate to login
 
-        }
+      //     console.log(error.message ,"not authenticated");
+      //     //navigate("/login")
+      // }
 
-        getUser();
-    }, [setuser])
-    
-    
+      const data = JSON.parse(localStorage.getItem("user"));
+      if (!data) {
+        navigate("/login");
+      }
+      setuser(data);
+    };
+
+    getUser();
+  }, [setuser]);
+
   return (
-    <UserContext.Provider value={{user ,setuser}}>
-    {children}
+    <UserContext.Provider value={{ user, setuser }}>
+      {children}
     </UserContext.Provider>
-    
-  )
+  );
 }
 
-export default Context
+export default Context;

@@ -17,14 +17,14 @@ export default function Postupload({ setposts, posts }) {
 
     const uploadPost = async () => {
 
-        setpostLoading(true);
-        if (!postState.imgUrl) {
-
-            throw Error("please select an image  ");
-
-        }
-
+        
         try {
+            setpostLoading(true);
+            if (!postState.imgUrl) {
+
+                throw Error("please select an image  ");
+    
+            }
 
 
             const { data } = await axios.post('https://socialix-social-media-backend.vercel.app/api/post/create', {
@@ -39,7 +39,7 @@ export default function Postupload({ setposts, posts }) {
             setpostLoading(false);
             window.location.reload();
         } catch (error) {
-
+            toast.error(error.message);
             console.log(error.message);
             setpostLoading(false);
 

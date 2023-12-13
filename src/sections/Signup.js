@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../context/Context';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { backendUrl } from '../consts';
 
 export default function Signup() {
 
@@ -26,7 +27,7 @@ export default function Signup() {
 
     try {
       setloading(true);
-      const {data} = await axios.post('https://socialix-social-media-backend.vercel.app/api/auth/signup' ,userDetails);
+      const {data} = await axios.post(backendUrl ,userDetails);
 
       setloading(false);
       setuser(data);
