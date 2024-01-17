@@ -11,20 +11,6 @@ function Context({ children }) {
 
   useEffect(() => {
     const getUser = async () => {
-      // try {
-
-      //     const data  = JSON.parse(localStorage.getItem("user"))
-      //     setuser(data);
-      //     console.log(data);
-
-      // } catch (error) {
-
-      //     //navigate to login
-
-      //     console.log(error.message ,"not authenticated");
-      //     //navigate("/login")
-      // }
-
       const data = JSON.parse(localStorage.getItem("user"));
       if (!data) {
         navigate("/login");
